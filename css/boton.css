@@ -1,0 +1,89 @@
+:root {
+  --border-radius: 2rem;
+  --bg: #060d23;
+  --btn-bg: #3f396f;
+  --glow-size: 0.5rem;
+}
+
+.boton {
+  min-width: 10rem;
+  min-height: 3rem;
+  text-decoration: none;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  position: relative;
+  z-index: 0;
+  border-radius: var(--border-radius);
+  transition: all 0.5s;
+  gap: 0.5rem;
+  font-family: "Manrope", sans-serif;
+  text-transform: uppercase;
+}
+
+.boton:before {
+  content: "";
+  background: linear-gradient(
+    to right,
+    #b881ff,
+    #a963f7,
+    #8bff5d,
+    #ffc300,
+    #b881ff,
+    #a963f7,
+    #8bff5d,
+    #ffc300,
+    #b881ff
+  );
+  position: absolute;
+  background-size: 300%;
+  z-index: -1;
+  filter: blur(var(--glow-size));
+  width: calc(100% + var(--glow-size));
+  height: calc(100% + var(--glow-size));
+  opacity: 0;
+  border-radius: var(--border-radius);
+  animation: glow 25s alternate infinite;
+  transition: opacity 0.5s linear;
+}
+
+.boton:active {
+  background: var(--btn-bg);
+}
+
+.boton:hover:before {
+  opacity: 1;
+}
+
+.boton:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--btn-bg);
+  left: 0;
+  top: 0;
+  border-radius: var(--border-radius);
+}
+
+@keyframes glow {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 300% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+.boton svg {
+  fill: white;
+  width: 30px;
+  height: 30px;
+}
